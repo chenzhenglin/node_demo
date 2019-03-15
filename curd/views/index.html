@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title></title>
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+<main class="main" id="top">
+
+    <div class="container">
+        <div class="table-responsive">
+            <button type="button" class="btn btn-success"><a href="/new">添加</a></button>
+            <table class="table table-sm mb-0 table-dashboard fs--1">
+                <thead class="bg-200 text-900">
+                <tr>
+                    <th><input class="ml-3" type="checkbox" aria-label="Checkbox for this table" /></th>
+                    <th>姓名</th>
+                    <th>性别</th>
+                    <th>年龄</th>
+                    <th class="text-center">邮箱</th>
+                    <th class="text-center">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{ each userInfo}}
+                    <tr class="btn-reveal-trigger">
+                        <td class="align-middle"><input class="ml-3" type="checkbox" aria-label="Checkbox for this row" /></td>
+                        <th class="align-middle"><a href="/detail?id={{ $value.id }}">{{ $value.name }}</a></th>
+                        <td class="align-middle">{{ if($value.gender === 1) }}男{{else}}女{{/if}}</td>
+                        <td class="align-middle">{{ $value.age }}</td>
+                        <td class="align-middle text-center fs-0">{{ $value.email }}</td>
+                        <td class="align-middle text-center">
+                            <a href="/edit?id={{ $value.id }}">编辑</a>
+                            <a href="/delete?id={{ $value.id }}">删除</a>
+                        </td>
+                    </tr>
+                {{ /each }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+</body>
+
+</html>
